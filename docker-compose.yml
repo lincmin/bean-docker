@@ -1,0 +1,13 @@
+version: '1.0'
+
+services:
+  beancount:
+    build: .
+    container_name: beancount-fava
+    ports:
+      - "5000:5000"
+    volumes:
+      # 将宿主机的 ./data 目录挂载到容器的 /data
+      # 确保该目录下有一个名为 main.beancount 的文件
+      - ./data:/data
+    restart: unless-stopped
